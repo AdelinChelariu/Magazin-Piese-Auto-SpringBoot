@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Products</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container row space">
+    <h1>Products</h1>
+    <div class="row gap">
+      <a class="btn btn-secondary" href="/reports.html">Reports</a>
+      <a class="btn btn-secondary" href="/orders.html">Orders</a>
+      <a class="btn btn-secondary" href="/categories.html">Categories</a>
+      <a class="btn btn-secondary" href="/manufacturers.html">Manufacturers</a>
+      <button id="btnLogout" type="button" class="btn">Logout</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- FILTERS -->
+  <section class="card">
+    <h2>Filters</h2>
+
+    <div class="grid">
+      <div>
+        <label>Search</label>
+        <input id="f_q" placeholder="sku / name" />
+      </div>
+
+      <div>
+        <label>Category</label>
+        <select id="f_category"></select>
+      </div>
+
+      <div>
+        <label>Manufacturer</label>
+        <select id="f_manufacturer"></select>
+      </div>
+
+      <div>
+        <label>Active</label>
+        <select id="f_active">
+          <option value="">(all)</option>
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row gap mt">
+      <button id="btnApply" type="button" class="btn">Apply</button>
+      <button id="btnResetFilters" type="button" class="btn btn-secondary">Reset</button>
+    </div>
+
+    <p id="status" class="status"></p>
+  </section>
+
+  <!-- TABLE -->
+  <section class="card">
+    <div class="row space">
+      <h2>List</h2>
+      <div class="row gap">
+        <button id="prevPage" type="button" class="btn btn-secondary">Prev</button>
+        <span id="pageInfo">Page 1</span>
+        <button id="nextPage" type="button" class="btn btn-secondary">Next</button>
+      </div>
+    </div>
+
+    <div class="table-wrap mt">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Manufacturer</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Active</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="card">
+    <div class="row space">
+      <h2 id="formTitle">Add Product</h2>
+      <button id="btnCancel" type="button" class="btn btn-secondary">Clear</button>
+    </div>
+
+    <form id="productForm">
+      <div class="grid">
+        <div>
+          <label>SKU</label>
+          <input id="p_sku" autocomplete="off" />
+        </div>
+
+        <div>
+          <label>Name</label>
+          <input id="p_name" autocomplete="off" />
+        </div>
+
+        <div>
+          <label>Category</label>
+          <select id="p_categoryId"></select>
+        </div>
+
+        <div>
+          <label>Manufacturer</label>
+          <select id="p_manufacturerId"></select>
+        </div>
+
+        <div>
+          <label>Price</label>
+          <input id="p_price" type="number" step="0.01" min="0" />
+        </div>
+
+        <div>
+          <label>Stock Qty</label>
+          <input id="p_stockQty" type="number" step="1" min="0" />
+        </div>
+
+        <div>
+          <label>VAT Rate (%)</label>
+          <input id="p_vatRate" type="number" step="0.01" min="0" />
+        </div>
+
+        <div>
+          <label>Active</label>
+          <select id="p_active">
+            <option value="true">true</option>
+            <option value="false">false</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row gap mt">
+        <button id="btnSave" type="button" class="btn">Add</button>
+      </div>
+    </form>
+  </section>
+
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/products.js"></script>
+</body>
+</html>

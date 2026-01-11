@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ro">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Categories</title>
+    <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+<header class="topbar">
+    <div class="container row space">
+        <h1>Categories</h1>
+        <div class="row gap">
+            <a class="btn btn-secondary" href="/products.html">Products</a>
+            <button id="btnLogout" type="button" class="btn">Logout</button>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- FILTER -->
+    <section class="card">
+        <h2>Search</h2>
+        <div class="grid">
+            <div>
+                <label>Search</label>
+                <input id="f_q" placeholder="category name..." />
+            </div>
+        </div>
+        <div class="row gap mt">
+            <button id="btnApply" type="button" class="btn">Apply</button>
+            <button id="btnResetFilters" type="button" class="btn btn-secondary">Reset</button>
+        </div>
+        <p id="status" class="status"></p>
+    </section>
+
+    <!-- TABLE -->
+    <section class="card">
+        <h2>List</h2>
+        <div class="table-wrap mt">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FORM -->
+    <section class="card">
+        <div class="row space">
+            <h2 id="formTitle">Add Category</h2>
+            <button id="btnCancel" type="button" class="btn btn-secondary">Clear</button>
+        </div>
+
+        <form id="categoryForm">
+            <div class="grid">
+                <div>
+                    <label>Name</label>
+                    <input id="c_name" autocomplete="off" />
+                </div>
+            </div>
+
+            <div class="row gap mt">
+                <button id="btnSave" type="button" class="btn">Add</button>
+            </div>
+        </form>
+    </section>
+
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/categories.js"></script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Orders</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container row space">
+    <h1>Orders</h1>
+    <div class="row gap">
+      <a class="btn btn-secondary" href="/products.html">Products</a>
+      <button id="btnLogout" class="btn">Logout</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h2>Filtre</h2>
+    <div class="grid">
+      <div>
+        <label>Search (orderNo / customer name / email)</label>
+        <input id="f_q" placeholder="ORD-2026... / ionut / gmail" />
+      </div>
+
+      <div>
+        <label>Status</label>
+        <select id="f_status">
+          <option value="">(all)</option>
+          <option value="PLACED">PLACED</option>
+          <option value="PAID">PAID</option>
+          <option value="SHIPPED">SHIPPED</option>
+          <option value="CANCELLED">CANCELLED</option>
+        </select>
+      </div>
+
+      <div>
+        <label>From</label>
+        <input id="f_from" type="datetime-local" />
+      </div>
+      <div>
+        <label>To</label>
+        <input id="f_to" type="datetime-local" />
+      </div>
+    </div>
+
+    <div class="row gap mt">
+      <button id="btnApply" class="btn">Apply</button>
+      <button id="btnReset" class="btn btn-secondary">Reset</button>
+    </div>
+
+    <p id="status" class="status"></p>
+  </section>
+
+  <section class="card">
+    <div class="row space">
+      <h2>List</h2>
+      <div class="row gap">
+        <button id="prevPage" class="btn btn-secondary">Prev</button>
+        <span id="pageInfo">Page 1</span>
+        <button id="nextPage" class="btn btn-secondary">Next</button>
+      </div>
+    </div>
+
+    <div class="table-wrap mt">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>OrderNo</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Customer</th>
+          <th>Total</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card" id="detailsCard" style="display:none;">
+    <div class="row space">
+      <h2>Order Details</h2>
+      <div class="row gap">
+        <select id="d_status">
+          <option value="PLACED">PLACED</option>
+          <option value="PAID">PAID</option>
+          <option value="SHIPPED">SHIPPED</option>
+          <option value="CANCELLED">CANCELLED</option>
+        </select>
+        <button id="btnSaveStatus" class="btn">Save status</button>
+      </div>
+    </div>
+
+    <p id="detailsMeta" class="status"></p>
+
+    <div class="table-wrap mt">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>SKU</th><th>Name</th><th>Qty</th><th>Unit</th><th>Line</th>
+        </tr>
+        </thead>
+        <tbody id="itemsBody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/orders.js"></script>
+</body>
+</html>

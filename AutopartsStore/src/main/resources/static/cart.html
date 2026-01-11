@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cart</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container row space">
+    <h1>Cart</h1>
+    <div class="row gap">
+      <a class="btn btn-secondary" href="/shop.html">Back to shop</a>
+      <button id="btnLogout" class="btn">Logout</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <div class="row space">
+      <h2>Items</h2>
+      <button id="btnClear" class="btn btn-secondary">Clear cart</button>
+    </div>
+
+    <p id="status" class="status"></p>
+
+    <div class="table-wrap mt">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Line</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="row space mt">
+      <div>
+        <label>Notes (optional)</label>
+        <input id="notes" placeholder="Leave at door..." />
+      </div>
+      <div style="text-align:right;">
+        <div><b>Total:</b> <span id="total">0</span></div>
+        <button id="btnCheckout" class="btn btn-primary mt">Checkout</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/cart-store.js"></script>
+<script src="/js/cart.js"></script>
+</body>
+</html>

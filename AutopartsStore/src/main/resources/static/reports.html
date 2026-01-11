@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Reports</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container row space">
+    <h1>Reports</h1>
+    <div class="row gap">
+      <a class="btn btn-secondary" href="/products.html">Products</a>
+      <button id="btnLogout" type="button" class="btn">Logout</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h2>Perioadă</h2>
+
+    <div class="grid">
+      <div>
+        <label>From</label>
+        <input id="from" type="datetime-local" />
+      </div>
+      <div>
+        <label>To</label>
+        <input id="to" type="datetime-local" />
+      </div>
+    </div>
+
+    <div class="row gap mt">
+      <button id="btnGenerate" type="button" class="btn">Generate</button>
+      <button id="btnLast30" type="button" class="btn btn-secondary">Last 30 days</button>
+      <button id="btnXlsx" type="button" class="btn btn-secondary">Export XLSX</button>
+      <button id="btnPdf" type="button" class="btn btn-secondary">Export PDF</button>
+
+    </div>
+
+    <p id="status" class="status"></p>
+  </section>
+
+  <section class="card">
+    <h2>Sales summary</h2>
+    <div class="table-wrap mt">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Orders</th>
+          <th>Subtotal</th>
+          <th>VAT</th>
+          <th>Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td id="s_orders">-</td>
+          <td id="s_subtotal">-</td>
+          <td id="s_vat">-</td>
+          <td id="s_total">-</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="row space">
+      <h2>Sales by category</h2>
+    </div>
+
+    <div class="table-wrap mt">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Qty</th>
+          <th>Subtotal</th>
+          <th>VAT</th>
+          <th>Total</th>
+        </tr>
+        </thead>
+        <tbody id="catBody"></tbody>
+      </table>
+    </div>
+
+    <div class="mt">
+      <canvas id="catChart" height="120"></canvas>
+    </div>
+  </section>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/reports.js"></script>
+</body>
+</html>

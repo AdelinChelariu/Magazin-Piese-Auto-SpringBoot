@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shop</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container row space">
+    <h1>Shop</h1>
+    <div class="row gap">
+      <a class="btn btn-secondary" href="/cart.html">Cart (<span id="cartCount">0</span>)</a>
+
+      <!-- links admin (ascunse la client) -->
+      <a id="lnkProducts" class="btn btn-secondary" href="/products.html">Admin Products</a>
+      <a id="lnkCategories" class="btn btn-secondary" href="/categories.html">Categories</a>
+      <a id="lnkManufacturers" class="btn btn-secondary" href="/manufacturers.html">Manufacturers</a>
+      <a id="lnkLog" class="btn btn-secondary" href="/activity-log.html">Activity Log</a>
+
+      <button id="btnLogout" class="btn">Logout</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h2>Filtre</h2>
+    <div class="grid">
+      <div>
+        <label>Search</label>
+        <input id="f_q" placeholder="bosch, FIL-001..." />
+      </div>
+      <div>
+        <label>Category</label>
+        <select id="f_category"><option value="">(all)</option></select>
+      </div>
+      <div>
+        <label>Manufacturer</label>
+        <select id="f_manufacturer"><option value="">(all)</option></select>
+      </div>
+      <div>
+        <label>Min price</label>
+        <input id="f_minPrice" type="number" step="0.01" min="0" />
+      </div>
+      <div>
+        <label>Max price</label>
+        <input id="f_maxPrice" type="number" step="0.01" min="0" />
+      </div>
+      <div>
+        <label>Min stock</label>
+        <input id="f_minStock" type="number" step="1" min="0" />
+      </div>
+    </div>
+
+    <div class="row gap mt">
+      <button id="btnApply" class="btn">Apply</button>
+      <button id="btnReset" class="btn btn-secondary">Reset</button>
+    </div>
+    <p id="status" class="status"></p>
+  </section>
+
+  <section class="card">
+    <div class="row space">
+      <h2>Products</h2>
+      <div class="row gap">
+        <button id="prevPage" class="btn btn-secondary">Prev</button>
+        <span id="pageInfo">Page 1</span>
+        <button id="nextPage" class="btn btn-secondary">Next</button>
+      </div>
+    </div>
+
+    <div class="table-wrap mt">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>SKU</th>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Manufacturer</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/cart-store.js"></script>
+<script src="/js/shop.js"></script>
+</body>
+</html>

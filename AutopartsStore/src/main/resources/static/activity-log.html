@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AutoParts Store – Activity Log</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="container row space">
+    <h1>Activity Log</h1>
+    <div class="row gap">
+      <a class="btn btn-secondary" href="/products.html">Products</a>
+      <a class="btn btn-secondary" href="/categories.html">Categories</a>
+      <a class="btn btn-secondary" href="/manufacturers.html">Manufacturers</a>
+      <button id="btnLogout" class="btn btn-secondary">Logout</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="card">
+    <h2>Filtre</h2>
+
+    <div class="grid">
+      <div>
+        <label>Username</label>
+        <input id="f_username" type="text" placeholder="admin..." />
+      </div>
+
+      <div>
+        <label>Action</label>
+        <input id="f_action" type="text" placeholder="CREATE_PRODUCT..." />
+      </div>
+
+      <div>
+        <label>Entity</label>
+        <input id="f_entity" type="text" placeholder="Product..." />
+      </div>
+
+      <div>
+        <label>Success</label>
+        <select id="f_success">
+          <option value="">(all)</option>
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+      </div>
+
+      <div>
+        <label>From</label>
+        <input id="f_from" type="datetime-local" />
+      </div>
+
+      <div>
+        <label>To</label>
+        <input id="f_to" type="datetime-local" />
+      </div>
+    </div>
+
+    <div class="row gap mt">
+      <button id="btnApply" class="btn">Apply</button>
+      <button id="btnReset" class="btn btn-secondary">Reset</button>
+    </div>
+
+    <p id="status" class="status"></p>
+  </section>
+
+  <section class="card">
+    <div class="row space">
+      <h2>Entries</h2>
+
+      <div class="row gap">
+        <label>Sort</label>
+        <select id="sortField">
+          <option value="createdAt">createdAt</option>
+          <option value="action">action</option>
+          <option value="entity">entity</option>
+          <option value="success">success</option>
+        </select>
+        <select id="sortDir">
+          <option value="desc">desc</option>
+          <option value="asc">asc</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row space mt">
+      <div class="row gap">
+        <button id="prevPage" class="btn btn-secondary">Prev</button>
+        <span id="pageInfo">Page 1</span>
+        <button id="nextPage" class="btn btn-secondary">Next</button>
+      </div>
+    </div>
+
+    <div class="table-wrap mt">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Time</th>
+          <th>User</th>
+          <th>Roles</th>
+          <th>Action</th>
+          <th>Entity</th>
+          <th>EntityId</th>
+          <th>Success</th>
+          <th>IP</th>
+          <th>Error</th>
+        </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/activity-log.js"></script>
+</body>
+</html>

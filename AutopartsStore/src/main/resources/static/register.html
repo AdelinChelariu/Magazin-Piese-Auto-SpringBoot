@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Register</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+<main class="container">
+  <section class="card" style="max-width:620px;margin:40px auto;">
+    <h2>Register (Client)</h2>
+
+    <div class="grid" style="grid-template-columns:1fr;">
+      <div>
+        <label>Username</label>
+        <input id="u" />
+      </div>
+      <div>
+        <label>Password</label>
+        <input id="p" type="password" />
+      </div>
+      <div>
+        <label>Full name</label>
+        <input id="n" />
+      </div>
+      <div>
+        <label>Email (optional)</label>
+        <input id="e" />
+      </div>
+    </div>
+
+    <div class="row gap mt">
+      <button id="btn" class="btn btn-primary">Create account</button>
+      <a class="btn btn-secondary" href="/login.html">Back to login</a>
+    </div>
+
+    <p id="status" class="status mt"></p>
+  </section>
+</main>
+
+<script src="/js/api.js"></script>
+<script>
+  const status = document.getElementById("status");
+  document.getElementById("btn").addEventListener("click", async () => {
+    status.textContent = "Creating...";
+    try {
+      await Api.request("/api/auth/register", {
+        method: "POST",
+        json: {
+          username: document.getElementById("u").value.trim(),
+          password: document.getElementById("p").value,
+          fullName: document.getElementById("n").value.trim(),
+          email: document.getElementById("e").value.trim() || null
+        }
+      });
+      status.textContent = "Account created. Go to Login.";
+    } catch (e) {
+      status.textContent = String(e.message || e);
+    }
+  });
+</script>
+</body>
+</html>

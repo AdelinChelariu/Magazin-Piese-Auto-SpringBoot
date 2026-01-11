@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login</title>
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+<body>
+<main class="container">
+  <section class="card" style="max-width:520px;margin:40px auto;">
+    <h2>Login</h2>
+
+    <form method="post" action="/login" class="mt">
+      <div class="grid" style="grid-template-columns:1fr;">
+        <div>
+          <label>Username</label>
+          <input name="username" />
+        </div>
+        <div>
+          <label>Password</label>
+          <input name="password" type="password" />
+        </div>
+      </div>
+
+      <div class="row gap mt">
+        <button class="btn btn-primary" type="submit">Login</button>
+        <a class="btn btn-secondary" href="/register.html">Register</a>
+      </div>
+
+      <p class="status mt" id="msg"></p>
+    </form>
+  </section>
+</main>
+
+<script>
+  const p = new URLSearchParams(location.search);
+  const msg = document.getElementById("msg");
+  if (p.get("error")) msg.textContent = "Login failed.";
+  if (p.get("logout")) msg.textContent = "Logged out.";
+</script>
+</body>
+</html>
